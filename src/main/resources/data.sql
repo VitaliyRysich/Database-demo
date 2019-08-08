@@ -1,3 +1,4 @@
+/*
 create table person
 (
   id integer not null,
@@ -6,6 +7,7 @@ create table person
   birth_date timestamp,
   primary key (id)
 );
+*/
 
 insert into person
   (id, name, location, birth_date)
