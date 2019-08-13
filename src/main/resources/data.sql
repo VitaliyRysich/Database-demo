@@ -1,17 +1,6 @@
-/*
-create table person
-(
-  id integer not null,
-  name varchar (255) not null,
-  location varchar (255),
-  birth_date timestamp,
-  primary key (id)
-);
-*/
-
-insert into person
-  (id, name, location, birth_date)
+insert into course
+  (id, name)
 values
-    (10001, 'Vitalii', 'Wroclaw', sysdate()),
-    (10002, 'Sweta', 'Wroclaw', sysdate()),
-    (10003, 'Pasza', 'Berdychiv', sysdate());
+    (10001, 'Course1'),
+    (10002, 'Course2'),
+    (10003, 'Course3');
