@@ -22,8 +22,8 @@ values
 
 
 insert into review
-  (id, rating, description)
+  (id, rating, description, course_id)
 values
-  (40001, '5', 'Great'),
-  (40002, '4', 'Good'),
-  (40003, '3' ,'Normal');
+  (40001, '5', 'Great', 10001),
+  (40002, '4', 'Good', 10001),
+  (40003, '3' ,'Normal', 10003);
