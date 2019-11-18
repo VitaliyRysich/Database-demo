@@ -2,6 +2,7 @@ package com.rysich.vitalii.databasedemo.repository;
 
 import com.rysich.vitalii.databasedemo.DemoApplication;
 import com.rysich.vitalii.databasedemo.entity.Course;
+import com.rysich.vitalii.databasedemo.entity.Review;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,6 +25,8 @@ class CourseRepositoryTest {
 
     @Autowired
     CourseRepository repository;
+    @Autowired
+    EntityManager em;
 
     @Test
     void findById_basic() {
@@ -53,6 +59,21 @@ class CourseRepositoryTest {
     void playWithEntityManager(){
         repository.playWithEntityManager();
     }
+
+    @Test
+    @Transactional
+    void retrieveReviewForCourse(){
+        Course course = repository.findById(10001L);
+        logger.info("{}", course.getReviews());
+    }
+
+    @Test
+    @Transactional
+    void retrieveCourseForReview(){
+        Review review = em.find(Review.class, 40001L);
+        logger.info("{}", review.getCourse());
+    }
+
 
 
 

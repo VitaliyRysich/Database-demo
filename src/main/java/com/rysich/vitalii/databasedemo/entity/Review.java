@@ -18,8 +18,9 @@ public class Review {
     protected Review() {
     }
 
-    public Review(String name) {
-        this.description = name;
+    public Review(String rating, String description) {
+        this.rating = rating;
+        this.description = description;
     }
 
     public Long getId() {
