@@ -8,8 +8,8 @@ values
 insert into passport
   (id, number)
 values
-  (30001, 'E11111'),
-  (30002, 'E22222'),
+  (30001, 'E12111'),
+  (30002, 'F12222'),
   (30003, 'E33333');
 
 insert into student
