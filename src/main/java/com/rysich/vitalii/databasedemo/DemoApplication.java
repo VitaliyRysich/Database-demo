@@ -2,6 +2,7 @@ package com.rysich.vitalii.databasedemo;
 
 import com.rysich.vitalii.databasedemo.entity.Course;
 import com.rysich.vitalii.databasedemo.entity.Review;
+import com.rysich.vitalii.databasedemo.entity.Student;
 import com.rysich.vitalii.databasedemo.repository.CourseRepository;
 import com.rysich.vitalii.databasedemo.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -31,10 +32,7 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<Review> reviews = new ArrayList<>();
-		reviews.add(new Review("5", "Great"));
-		reviews.add(new Review("5", "Excellent"));
-		courseRepository.addReviewsForCourse(10003L, reviews);
+		studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Java"));
 	}
 
 }

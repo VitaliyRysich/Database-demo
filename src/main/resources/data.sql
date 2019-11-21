@@ -19,11 +19,17 @@ values
   (20002, 'Student2', 30002),
   (20003, 'Student3', 30003);
 
-
-
 insert into review
   (id, rating, description, course_id)
 values
   (40001, '5', 'Great', 10001),
   (40002, '4', 'Good', 10001),
   (40003, '3' ,'Normal', 10003);
+
+insert into student_course
+  (student_id, course_id)
+values
+  (20001, 10001),
+  (20002, 10001),
+  (20003, 10001),
+  (20001, 10003);
