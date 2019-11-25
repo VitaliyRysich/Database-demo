@@ -2,6 +2,7 @@ package com.rysich.vitalii.databasedemo.repository;
 
 import com.rysich.vitalii.databasedemo.entity.Course;
 import com.rysich.vitalii.databasedemo.entity.Review;
+import com.rysich.vitalii.databasedemo.entity.ReviewRating;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,13 @@ public class CourseRepository {
             review.setCourse(course);
             em.persist(review);
         }
+    }
+
+    public void addHardcodeReviewsForCourse() {
+        Course course = findById(10003L);
+        logger.info("course.getReview() - {}", course.getReviews());
+        Review review1 = new Review(ReviewRating.FIVE, "Great");
+        Review review2 = new Review(ReviewRating.FIVE, "GOOD");
+
     }
 }

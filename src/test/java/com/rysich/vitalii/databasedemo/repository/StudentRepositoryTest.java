@@ -1,5 +1,6 @@
 package com.rysich.vitalii.databasedemo.repository;
 
+import com.rysich.vitalii.databasedemo.entity.Address;
 import com.rysich.vitalii.databasedemo.entity.Course;
 import com.rysich.vitalii.databasedemo.entity.Passport;
 import com.rysich.vitalii.databasedemo.entity.Student;
@@ -27,6 +28,16 @@ class StudentRepositoryTest {
 
     @Autowired
     EntityManager em;
+
+    @Test
+    @Transactional
+    public void setAddressDetails() {
+        Student student = em.find(Student.class, 20001L);
+        student.setAddress(new Address("Wallstreet", "New-York", "USA"));
+        em.flush();
+        logger.info("Student -> {}", student);
+        logger.info("Passport -> {}", student.getPassport());
+    }
 
     @Test
     @Transactional
