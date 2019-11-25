@@ -35,6 +35,17 @@ class CourseRepositoryTest {
     }
 
     @Test
+    @Transactional //cahce test
+    void findById_firstLevelCacheDemo() {
+        Course course = repository.findById(10001L);
+        logger.info("First course retrieved: {}", course);
+        Course course1 = repository.findById(10001L);
+        logger.info("First course retrieved again: {}", course1);
+        assertEquals("Course1", course.getName());
+        assertEquals("Course1", course1.getName());
+    }
+
+    @Test
     @DirtiesContext
     void deleteById_basic(){
         repository.deleteById(10001L);
@@ -73,9 +84,6 @@ class CourseRepositoryTest {
         Review review = em.find(Review.class, 40001L);
         logger.info("{}", review.getCourse());
     }
-
-
-
 
 
 }
