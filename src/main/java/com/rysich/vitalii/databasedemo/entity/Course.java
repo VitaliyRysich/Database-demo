@@ -2,7 +2,9 @@ package com.rysich.vitalii.databasedemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +17,8 @@ import java.util.List;
         @NamedQuery(name = "query_get_Course", query = "select c from Course c where name like '%Course%'")
 })
 @Cacheable
+@SQLDelete(sql = "update course set is_deleted=true where id=?")
+@Where(clause = "is_deleted = false")
 public class Course {
     @Id
     @GeneratedValue
@@ -23,7 +27,6 @@ public class Course {
     private String name;
 
     @OneToMany(mappedBy = "course")
-    @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
 
     @ManyToMany(mappedBy = "courses")
@@ -34,6 +37,8 @@ public class Course {
     private LocalDateTime lastUpdatedDate;
     @CreationTimestamp
     private LocalDateTime createdDate;
+
+    private boolean isDeleted;
 
     protected Course() {
     }
