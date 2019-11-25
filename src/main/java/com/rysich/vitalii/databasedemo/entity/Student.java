@@ -1,5 +1,7 @@
 package com.rysich.vitalii.databasedemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Student {
     private Passport passport;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "STUDENT_COURSE",
             joinColumns = @JoinColumn(name = "STUDENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
